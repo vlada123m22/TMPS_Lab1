@@ -83,3 +83,6 @@ is used to construct a Computer object step by step, with flexibility to include
     }
 ```
 
+### Conclusion
+This project has enhanced the understanding of creational patterns.
+Note: Some parts of this project were generated using ChatGPT
