@@ -21,7 +21,7 @@ public class Main {
         square.draw();
 
         // Builder Pattern
-        Computer computer = new Computer.ComputerBuilder("Intel i9", "16GB")
+        Computer computer = new Computer.ComputerBuilder("Intel i9", "16GB", "some pixel")
                 .setGraphicsCardEnabled(true)
                 .setBluetoothEnabled(true)
                 .build();

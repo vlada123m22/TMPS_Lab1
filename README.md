@@ -32,8 +32,54 @@ __4. Based on the previous point, implement atleast 3 creational design patterns
 ## Implementation
 ### Singleton Pattern 
 is used to ensure there's only one instance of DatabaseConnection.
+DatabaseConnection has only 2 methods: connect() and disconnect() ans a private constructor to ensure a single instance of the object exists. Also there is a method getInstance that returns the instance of the class.
+```
+    public static synchronized DatabaseConnection getInstance() {
+        if (instance == null) {
+            instance = new DatabaseConnection();
+        }
+        return instance;
+    }
+```
 ### Factory Pattern 
 allows us to create Shape objects (either Circle or Square) without specifying the exact class in the client code.
+
+I have one Shape interface, a ShapeFactory class and 3 concrete shapes that implement the Shape interface.
+```
+public class ShapeFactory {
+
+    public Shape getShape(String shapeType) {
+        if (shapeType.equalsIgnoreCase("CIRCLE")) {
+            return new Circle();
+        } else if (shapeType.equalsIgnoreCase("SQUARE")) {
+            return new Square();
+        } else if (shapeType.equalsIgnoreCase("TRIANGLE")) {
+            return new Triangle();
+        } else if (shapeType.equalsIgnoreCase("RECTANGLE")){
+            return new Rectangle();}
+        return null;
+    }
+} 
+```
+
 ### Builder Pattern 
 is used to construct a Computer object step by step, with flexibility to include or exclude optional parameters like graphics card or Bluetooth.
+#### Builder Class Constructor:
+```
+        public ComputerBuilder(String CPU, String RAM, String gpu) {
+            this.CPU = CPU;
+            this.RAM = RAM;
+            GPU = gpu;
+        }
+```
+#### Computer Class Constructor
+```
+    private Computer(ComputerBuilder builder) {
+        this.CPU = builder.CPU;
+        this.RAM = builder.RAM;
+        this.GPU = builder.GPU;
+        this.isGraphicsCardEnabled = builder.isGraphicsCardEnabled;
+        this.isBluetoothEnabled = builder.isBluetoothEnabled;
+    }
+```
 
